@@ -1,33 +1,15 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { useChatStore } from '../store/chatStore';
-import ChatScreen from '../screens/ChatScreen';
-import CommunityScreen from '../screens/CommunityScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import SubscriptionsScreen from '../screens/SubscriptionsScreen';
+import { StyleSheet, Text } from 'react-native';
+import AccueilScreen from '../screens/AccueilScreen';
+import ClubScreen from '../screens/ClubScreen';
+import EquipeScreen from '../screens/EquipeScreen';
+import MatchsScreen from '../screens/MatchsScreen';
 import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
 
-function TabIcon({ icon, focused, badge }: { icon: string; focused: boolean; badge?: number }) {
-  return (
-    <View>
-      <Text style={[styles.icon, focused && styles.iconActive]}>{icon}</Text>
-      {badge != null && badge > 0 && (
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>{badge > 99 ? '99+' : badge}</Text>
-        </View>
-      )}
-    </View>
-  );
-}
-
 export default function TabNavigator() {
-  const totalUnread = useChatStore((s) =>
-    s.rooms.reduce((acc, r) => acc + r.unreadCount, 0),
-  );
-
   return (
     <Tab.Navigator
       screenOptions={{
@@ -39,38 +21,24 @@ export default function TabNavigator() {
       }}
     >
       <Tab.Screen
-        name="Community"
-        component={CommunityScreen}
-        options={{
-          tabBarLabel: 'Communauté',
-          tabBarIcon: ({ focused }) => <TabIcon icon="🏠" focused={focused} />,
-        }}
+        name="Accueil"
+        component={AccueilScreen}
+        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>🏠</Text> }}
       />
       <Tab.Screen
-        name="Chat"
-        component={ChatScreen}
-        options={{
-          tabBarLabel: 'Chat',
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="💬" focused={focused} badge={totalUnread} />
-          ),
-        }}
+        name="Matchs"
+        component={MatchsScreen}
+        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>⚽</Text> }}
       />
       <Tab.Screen
-        name="Subscriptions"
-        component={SubscriptionsScreen}
-        options={{
-          tabBarLabel: 'Abonnements',
-          tabBarIcon: ({ focused }) => <TabIcon icon="⭐" focused={focused} />,
-        }}
+        name="Équipe"
+        component={EquipeScreen}
+        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>👥</Text> }}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarLabel: 'Profil',
-          tabBarIcon: ({ focused }) => <TabIcon icon="👤" focused={focused} />,
-        }}
+        name="Club"
+        component={ClubScreen}
+        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>🏆</Text> }}
       />
     </Tab.Navigator>
   );
@@ -86,30 +54,6 @@ const styles = StyleSheet.create({
   },
   tabLabel: {
     fontSize: 11,
-    fontWeight: '500',
-  },
-  icon: {
-    fontSize: 22,
-    opacity: 0.5,
-  },
-  iconActive: {
-    opacity: 1,
-  },
-  badge: {
-    position: 'absolute',
-    top: -4,
-    right: -8,
-    backgroundColor: colors.primary,
-    borderRadius: 8,
-    minWidth: 16,
-    height: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 3,
-  },
-  badgeText: {
-    fontSize: 9,
-    fontWeight: '800',
-    color: colors.text,
+    fontWeight: '600',
   },
 });
