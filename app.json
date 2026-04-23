@@ -1,4 +1,18 @@
 {
-  "name": "RomicheTV",
-  "displayName": "RomicheTV"
+  "expo": {
+    "name": "RomicheTV",
+    "slug": "romichetv",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "platforms": ["ios", "android"],
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0A0F"
+      }
+    },
+    "ios": {
+      "supportsTablet": false
+    }
+  }
 }
