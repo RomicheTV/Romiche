@@ -9,51 +9,30 @@ import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
 
+const icon = (emoji: string, focused: boolean) => (
+  <Text style={{ fontSize: 22, opacity: focused ? 1 : 0.45 }}>{emoji}</Text>
+);
+
 export default function TabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.tabBar,
+        tabBarStyle: styles.bar,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarLabelStyle: styles.tabLabel,
+        tabBarLabelStyle: styles.label,
       }}
     >
-      <Tab.Screen
-        name="Accueil"
-        component={AccueilScreen}
-        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>🏠</Text> }}
-      />
-      <Tab.Screen
-        name="Matchs"
-        component={MatchsScreen}
-        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>⚽</Text> }}
-      />
-      <Tab.Screen
-        name="Équipe"
-        component={EquipeScreen}
-        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>👥</Text> }}
-      />
-      <Tab.Screen
-        name="Club"
-        component={ClubScreen}
-        options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 22, opacity: color === colors.primary ? 1 : 0.5 }}>🏆</Text> }}
-      />
+      <Tab.Screen name="Accueil" component={AccueilScreen} options={{ tabBarIcon: ({ focused }) => icon('🏠', focused) }} />
+      <Tab.Screen name="Matchs" component={MatchsScreen} options={{ tabBarIcon: ({ focused }) => icon('⚽', focused) }} />
+      <Tab.Screen name="Équipe" component={EquipeScreen} options={{ tabBarIcon: ({ focused }) => icon('👥', focused) }} />
+      <Tab.Screen name="Club" component={ClubScreen} options={{ tabBarIcon: ({ focused }) => icon('🏆', focused) }} />
     </Tab.Navigator>
   );
 }
 
 const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: colors.surface,
-    borderTopColor: colors.border,
-    borderTopWidth: 1,
-    height: 60,
-    paddingBottom: 8,
-  },
-  tabLabel: {
-    fontSize: 11,
-    fontWeight: '600',
-  },
+  bar: { backgroundColor: colors.surface, borderTopColor: colors.border, borderTopWidth: 1, height: 60, paddingBottom: 8 },
+  label: { fontSize: 11, fontWeight: '600' },
 });

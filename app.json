@@ -4,15 +4,7 @@
     "slug": "so-londais",
     "version": "1.0.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "dark",
-    "platforms": ["ios", "android"],
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#0A0A0F"
-      }
-    },
-    "ios": {
-      "supportsTablet": false
-    }
+    "userInterfaceStyle": "light",
+    "platforms": ["ios", "android"]
   }
 }

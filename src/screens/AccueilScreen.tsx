@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MatchCard from '../components/MatchCard';
 import NewsCard from '../components/NewsCard';
@@ -13,34 +7,32 @@ import { useMatchStore } from '../store/matchStore';
 import { useNewsStore } from '../store/newsStore';
 import { borderRadius, colors, spacing, typography } from '../theme';
 
+const VALEURS = ['Jeu', 'Plaisir', 'Solidarité', 'Convivialité'];
+
 export default function AccueilScreen() {
   const news = useNewsStore((s) => s.items);
   const matches = useMatchStore((s) => s.matches);
-
   const prochainMatch = matches.find((m) => !m.joue);
   const dernierResultat = matches.filter((m) => m.joue)[0];
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
       <ScrollView showsVerticalScrollIndicator={false}>
+
         {/* Header */}
         <View style={styles.header}>
           <View>
-            <Text style={styles.clubName}>S.O. Londais</Text>
-            <Text style={styles.since}>Stade Olympique · depuis 1927</Text>
+            <Text style={styles.nom}>S.O. Londais</Text>
+            <Text style={styles.sous}>Stade Olympique · depuis 1927</Text>
           </View>
-          <View style={styles.emblem}>
-            <Text style={styles.emblemText}>⚽</Text>
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>⚽</Text>
           </View>
         </View>
 
         {/* Valeurs */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.valeurs}
-        >
-          {['Jeu', 'Plaisir', 'Solidarité', 'Convivialité'].map((v) => (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.valeursRow}>
+          {VALEURS.map((v) => (
             <View key={v} style={styles.valeurChip}>
               <Text style={styles.valeurText}>{v}</Text>
             </View>
@@ -66,78 +58,25 @@ export default function AccueilScreen() {
         {/* Actualités */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Actualités</Text>
-          {news.map((item) => (
-            <NewsCard key={item.id} item={item} />
-          ))}
+          {news.map((item) => <NewsCard key={item.id} item={item} />)}
         </View>
+
+        <View style={{ height: 32 }} />
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: colors.dark,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.lg,
-  },
-  clubName: {
-    ...typography.h2,
-    color: '#FFFFFF',
-  },
-  since: {
-    ...typography.caption,
-    color: colors.gold,
-    marginTop: 2,
-  },
-  emblem: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: colors.gold,
-  },
-  emblemText: {
-    fontSize: 26,
-  },
-  valeurs: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.md,
-    gap: spacing.sm,
-  },
-  valeurChip: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
-    backgroundColor: colors.primary,
-    borderRadius: borderRadius.full,
-    borderWidth: 1,
-    borderColor: colors.gold,
-  },
-  valeurText: {
-    ...typography.label,
-    color: '#FFFFFF',
-    fontWeight: '700',
-  },
-  section: {
-    paddingHorizontal: spacing.md,
-    marginBottom: spacing.md,
-  },
-  sectionTitle: {
-    ...typography.label,
-    color: colors.textSecondary,
-    textTransform: 'uppercase',
-    letterSpacing: 0.8,
-    marginBottom: spacing.sm,
-    marginTop: spacing.sm,
-  },
+  root: { flex: 1, backgroundColor: colors.background },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: colors.dark, paddingHorizontal: spacing.md, paddingVertical: spacing.lg },
+  nom: { ...typography.h2, color: '#FFF' },
+  sous: { ...typography.caption, color: colors.gold, marginTop: 2 },
+  badge: { width: 52, height: 52, borderRadius: 26, backgroundColor: colors.primary, borderWidth: 2, borderColor: colors.gold, alignItems: 'center', justifyContent: 'center' },
+  badgeText: { fontSize: 26 },
+  valeursRow: { paddingHorizontal: spacing.md, paddingVertical: spacing.md, gap: spacing.sm },
+  valeurChip: { paddingHorizontal: spacing.md, paddingVertical: spacing.sm, backgroundColor: colors.primary, borderRadius: borderRadius.full, borderWidth: 1, borderColor: colors.gold },
+  valeurText: { ...typography.label, color: '#FFF', fontWeight: '700' },
+  section: { paddingHorizontal: spacing.md, marginBottom: spacing.sm },
+  sectionTitle: { ...typography.label, color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: spacing.sm, marginTop: spacing.md },
 });
