@@ -5,6 +5,13 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "platforms": ["ios", "android"]
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "fr.solondais.app",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "fr.solondais.app"
+    }
   }
 }
