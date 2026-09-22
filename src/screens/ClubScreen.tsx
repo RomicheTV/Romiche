@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { borderRadius, colors, spacing, typography } from '../theme';
 
@@ -16,7 +16,7 @@ export default function ClubScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
 
         <View style={styles.hero}>
-          <View style={styles.logo}><Text style={{ fontSize: 40 }}>⚽</Text></View>
+          <Image source={require('../../assets/logo.png')} style={styles.logo} />
           <Text style={styles.nom}>Stade Olympique Londais</Text>
           <Text style={styles.since}>Fondé en 1927</Text>
         </View>
@@ -76,7 +76,7 @@ export default function ClubScreen() {
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.background },
   hero: { backgroundColor: colors.dark, alignItems: 'center', paddingVertical: spacing.xl, gap: spacing.sm },
-  logo: { width: 80, height: 80, borderRadius: 40, backgroundColor: colors.primary, borderWidth: 3, borderColor: colors.gold, alignItems: 'center', justifyContent: 'center' },
+  logo: { width: 80, height: 80, borderRadius: 40 },
   nom: { ...typography.h2, color: '#FFF', textAlign: 'center' },
   since: { ...typography.body, color: colors.gold },
   section: { paddingHorizontal: spacing.md, marginTop: spacing.lg },

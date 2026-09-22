@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MatchCard from '../components/MatchCard';
 import NewsCard from '../components/NewsCard';
@@ -25,9 +25,7 @@ export default function AccueilScreen() {
             <Text style={styles.nom}>S.O. Londais</Text>
             <Text style={styles.sous}>Stade Olympique · depuis 1927</Text>
           </View>
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>⚽</Text>
-          </View>
+          <Image source={require('../../assets/logo.png')} style={styles.badge} />
         </View>
 
         {/* Valeurs */}
@@ -72,8 +70,7 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: colors.dark, paddingHorizontal: spacing.md, paddingVertical: spacing.lg },
   nom: { ...typography.h2, color: '#FFF' },
   sous: { ...typography.caption, color: colors.gold, marginTop: 2 },
-  badge: { width: 52, height: 52, borderRadius: 26, backgroundColor: colors.primary, borderWidth: 2, borderColor: colors.gold, alignItems: 'center', justifyContent: 'center' },
-  badgeText: { fontSize: 26 },
+  badge: { width: 52, height: 52, borderRadius: 26 },
   valeursRow: { paddingHorizontal: spacing.md, paddingVertical: spacing.md, gap: spacing.sm },
   valeurChip: { paddingHorizontal: spacing.md, paddingVertical: spacing.sm, backgroundColor: colors.primary, borderRadius: borderRadius.full, borderWidth: 1, borderColor: colors.gold },
   valeurText: { ...typography.label, color: '#FFF', fontWeight: '700' },
