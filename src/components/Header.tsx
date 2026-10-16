@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { colors, spacing, typography } from '../theme';
@@ -10,7 +11,7 @@ export default function Header({ title = 'S.O. Londais' }: { title?: string }) {
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.avatar}>
-        <Text style={styles.avatarIcon}>👤</Text>
+        <Ionicons name="person" size={18} color="#FFF" />
       </View>
     </View>
   );
@@ -35,5 +36,4 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     alignItems: 'center', justifyContent: 'center',
   },
-  avatarIcon: { fontSize: 16 },
 });

@@ -1,16 +1,20 @@
+import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import AccueilScreen from '../screens/AccueilScreen';
 import ClubScreen from '../screens/ClubScreen';
 import EquipeScreen from '../screens/EquipeScreen';
 import MatchsScreen from '../screens/MatchsScreen';
+import SolTvScreen from '../screens/SolTvScreen';
 import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
 
-const icon = (emoji: string, focused: boolean) => (
-  <Text style={{ fontSize: 22, opacity: focused ? 1 : 0.45 }}>{emoji}</Text>
+type IoniconName = keyof typeof Ionicons.glyphMap;
+
+const icon = (name: IoniconName, focused: boolean) => (
+  <Ionicons name={name} size={22} color={focused ? colors.gold : colors.textMuted} />
 );
 
 export default function TabNavigator() {
@@ -24,10 +28,11 @@ export default function TabNavigator() {
         tabBarLabelStyle: styles.label,
       }}
     >
-      <Tab.Screen name="Accueil" component={AccueilScreen} options={{ tabBarIcon: ({ focused }) => icon('🏠', focused) }} />
-      <Tab.Screen name="Matchs" component={MatchsScreen} options={{ tabBarIcon: ({ focused }) => icon('⚽', focused) }} />
-      <Tab.Screen name="Équipe" component={EquipeScreen} options={{ tabBarIcon: ({ focused }) => icon('👥', focused) }} />
-      <Tab.Screen name="Club" component={ClubScreen} options={{ tabBarIcon: ({ focused }) => icon('🏆', focused) }} />
+      <Tab.Screen name="Accueil" component={AccueilScreen} options={{ tabBarIcon: ({ focused }) => icon('home', focused) }} />
+      <Tab.Screen name="Matchs" component={MatchsScreen} options={{ tabBarIcon: ({ focused }) => icon('football', focused) }} />
+      <Tab.Screen name="SOL TV" component={SolTvScreen} options={{ tabBarIcon: ({ focused }) => icon('play-circle', focused) }} />
+      <Tab.Screen name="Équipe" component={EquipeScreen} options={{ tabBarIcon: ({ focused }) => icon('people', focused) }} />
+      <Tab.Screen name="Club" component={ClubScreen} options={{ tabBarIcon: ({ focused }) => icon('trophy', focused) }} />
     </Tab.Navigator>
   );
 }
