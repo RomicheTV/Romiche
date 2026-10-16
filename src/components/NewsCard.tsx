@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { borderRadius, colors, spacing, typography } from '../theme';
+import { borderRadius, colors, shadow, spacing, typography } from '../theme';
 import type { NewsItem } from '../store/newsStore';
 
 const CAT_COLOR = { resultat: colors.win, evenement: '#7C3AED', club: colors.gold };
@@ -26,7 +26,7 @@ export default function NewsCard({ item }: { item: NewsItem }) {
 }
 
 const styles = StyleSheet.create({
-  card: { backgroundColor: colors.surface, borderRadius: borderRadius.md, padding: spacing.md, marginBottom: spacing.sm, borderWidth: 1, borderColor: colors.border, gap: spacing.xs },
+  card: { backgroundColor: colors.surface, borderRadius: borderRadius.lg, padding: spacing.md, marginBottom: spacing.sm, gap: spacing.xs, ...shadow },
   top: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   badge: { paddingHorizontal: spacing.sm, paddingVertical: 3, borderRadius: borderRadius.full },
   badgeText: { fontSize: 11, fontWeight: '700', textTransform: 'uppercase' },

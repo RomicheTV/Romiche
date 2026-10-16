@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { borderRadius, colors, spacing, typography } from '../theme';
+import { borderRadius, colors, shadow, spacing, typography } from '../theme';
 import type { Match } from '../store/matchStore';
 
 export default function MatchCard({ match }: { match: Match }) {
@@ -45,7 +45,7 @@ export default function MatchCard({ match }: { match: Match }) {
 }
 
 const styles = StyleSheet.create({
-  card: { backgroundColor: colors.surface, borderRadius: borderRadius.md, padding: spacing.md, marginBottom: spacing.sm, borderWidth: 1, borderColor: colors.border, gap: spacing.sm },
+  card: { backgroundColor: colors.surface, borderRadius: borderRadius.lg, padding: spacing.md, marginBottom: spacing.sm, gap: spacing.sm, ...shadow },
   top: { flexDirection: 'row', justifyContent: 'space-between' },
   competition: { ...typography.caption, color: colors.textMuted, fontWeight: '600', textTransform: 'uppercase' },
   lieuBadge: { paddingHorizontal: 8, paddingVertical: 2, borderRadius: borderRadius.full, backgroundColor: colors.surfaceElevated },

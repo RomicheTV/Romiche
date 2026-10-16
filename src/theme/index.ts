@@ -1,15 +1,16 @@
 // Couleurs du logo S.O. Londais : bleu, blanc, or, noir
 export const colors = {
-  primary: '#1070C8',       // bleu du logo
-  primaryDark: '#0A5AA0',
-  gold: '#C4A03A',          // anneau or du logo
-  background: '#F4F6F9',
+  primary: '#2E5FE0',       // bleu vif du logo
+  primaryDark: '#1F47B8',
+  gold: '#D9A94A',          // anneau or du logo
+  background: '#F4F6FB',
   surface: '#FFFFFF',
-  surfaceElevated: '#EEF1F6',
-  dark: '#0A1628',          // fond header sombre
+  surfaceElevated: '#EEF1F8',
+  dark: '#0A1628',          // fond écran de démarrage
   text: '#111827',
   textSecondary: '#6B7280',
   textMuted: '#9CA3AF',
+  textOnPrimary: '#FFFFFF',
   border: '#E5E7EB',
   win: '#16A34A',
   draw: '#6B7280',
@@ -21,7 +22,15 @@ export const spacing = {
 };
 
 export const borderRadius = {
-  sm: 6, md: 12, lg: 18, full: 9999,
+  sm: 8, md: 14, lg: 20, full: 9999,
+};
+
+export const shadow = {
+  shadowColor: '#0A1628',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.08,
+  shadowRadius: 12,
+  elevation: 3,
 };
 
 export const typography = {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { borderRadius, colors, spacing, typography } from '../theme';
+import Header from '../components/Header';
+import { borderRadius, colors, shadow, spacing, typography } from '../theme';
 
 const VALEURS = [
   { emoji: '⚽', titre: 'Jeu', desc: 'Un football offensif, technique et spectaculaire, au service du collectif.' },
@@ -13,6 +14,7 @@ const VALEURS = [
 export default function ClubScreen() {
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
+      <Header />
       <ScrollView showsVerticalScrollIndicator={false}>
 
         <View style={styles.hero}>
@@ -75,18 +77,18 @@ export default function ClubScreen() {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.background },
-  hero: { backgroundColor: colors.dark, alignItems: 'center', paddingVertical: spacing.xl, gap: spacing.sm },
+  hero: { backgroundColor: colors.primary, alignItems: 'center', paddingVertical: spacing.xl, gap: spacing.sm },
   logo: { width: 80, height: 80, borderRadius: 40 },
   nom: { ...typography.h2, color: '#FFF', textAlign: 'center' },
   since: { ...typography.body, color: colors.gold },
   section: { paddingHorizontal: spacing.md, marginTop: spacing.lg },
-  sectionTitle: { ...typography.label, color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: spacing.sm },
-  valeurCard: { flexDirection: 'row', backgroundColor: colors.surface, borderRadius: borderRadius.md, padding: spacing.md, marginBottom: spacing.sm, borderWidth: 1, borderColor: colors.border, gap: spacing.md, alignItems: 'flex-start' },
+  sectionTitle: { ...typography.h3, color: colors.text, fontWeight: '800', marginBottom: spacing.sm },
+  valeurCard: { flexDirection: 'row', backgroundColor: colors.surface, borderRadius: borderRadius.lg, padding: spacing.md, marginBottom: spacing.sm, gap: spacing.md, alignItems: 'flex-start', ...shadow },
   valeurTitre: { ...typography.h3, color: colors.primary, fontSize: 16 },
   valeurDesc: { ...typography.body, color: colors.textSecondary, lineHeight: 21 },
-  card: { backgroundColor: colors.surface, borderRadius: borderRadius.md, padding: spacing.md, borderWidth: 1, borderColor: colors.border, gap: spacing.sm },
+  card: { backgroundColor: colors.surface, borderRadius: borderRadius.lg, padding: spacing.md, gap: spacing.sm, ...shadow },
   cardText: { ...typography.body, color: colors.textSecondary, lineHeight: 23 },
-  equipeRow: { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: colors.surface, padding: spacing.md, borderRadius: borderRadius.md, marginBottom: spacing.xs, borderWidth: 1, borderColor: colors.border },
+  equipeRow: { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: colors.surface, padding: spacing.md, borderRadius: borderRadius.lg, marginBottom: spacing.xs, ...shadow },
   equipeLabel: { ...typography.label, color: colors.text, fontWeight: '600' },
   equipeCat: { ...typography.caption, color: colors.textSecondary },
   infoRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: spacing.xs, borderBottomWidth: 1, borderBottomColor: colors.border },

@@ -1,7 +1,8 @@
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { borderRadius, colors, spacing, typography } from '../theme';
+import Header from '../components/Header';
+import { borderRadius, colors, shadow, spacing, typography } from '../theme';
 
 const JOUEURS = [
   { id: '1', nom: 'Marc Dubois', numero: 1, poste: 'Gardien', avatar: 'https://i.pravatar.cc/150?u=p1' },
@@ -24,7 +25,8 @@ export default function EquipeScreen() {
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
-      <View style={styles.header}>
+      <Header />
+      <View style={styles.subHeader}>
         <Text style={styles.title}>Équipe 1ère</Text>
         <Text style={styles.sub}>{JOUEURS.length} joueurs · Saison 2025-26</Text>
       </View>
@@ -60,13 +62,13 @@ export default function EquipeScreen() {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.background },
-  header: { paddingHorizontal: spacing.md, paddingVertical: spacing.lg, backgroundColor: colors.dark, gap: 4 },
+  subHeader: { paddingHorizontal: spacing.md, paddingVertical: spacing.md, backgroundColor: colors.primary, gap: 4 },
   title: { ...typography.h2, color: '#FFF' },
   sub: { ...typography.caption, color: colors.gold },
   list: { padding: spacing.md, paddingBottom: 80 },
   section: { marginBottom: spacing.lg },
-  sectionTitle: { ...typography.label, color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: spacing.sm },
-  row: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface, borderRadius: borderRadius.md, padding: spacing.sm, marginBottom: spacing.xs, borderWidth: 1, borderColor: colors.border, gap: spacing.sm },
+  sectionTitle: { ...typography.h3, color: colors.text, fontWeight: '800', marginBottom: spacing.sm },
+  row: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface, borderRadius: borderRadius.lg, padding: spacing.sm, marginBottom: spacing.xs, gap: spacing.sm, ...shadow },
   numero: { width: 28, fontSize: 17, fontWeight: '800', color: colors.primary, textAlign: 'center' },
   avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: colors.surfaceElevated },
   info: { flex: 1 },
