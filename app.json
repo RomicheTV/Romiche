@@ -5,7 +5,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "icon": "./assets/icon.png",
     "ios": {
       "bundleIdentifier": "fr.solondais.app"
@@ -30,6 +34,11 @@
           "backgroundColor": "#0A1628"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "566739f5-0581-4761-8a7a-1e300417f73d"
+      }
+    }
   }
 }
