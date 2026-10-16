@@ -33,10 +33,15 @@ export const shadow = {
   elevation: 3,
 };
 
+export const fonts = {
+  title: 'Oswald_700Bold',
+  titleSemiBold: 'Oswald_600SemiBold',
+};
+
 export const typography = {
-  h1: { fontSize: 28, fontWeight: '700' as const },
-  h2: { fontSize: 22, fontWeight: '700' as const },
-  h3: { fontSize: 18, fontWeight: '600' as const },
+  h1: { fontSize: 28, fontFamily: fonts.title },
+  h2: { fontSize: 22, fontFamily: fonts.title },
+  h3: { fontSize: 18, fontFamily: fonts.titleSemiBold },
   body: { fontSize: 15, fontWeight: '400' as const },
   caption: { fontSize: 12, fontWeight: '400' as const },
   label: { fontSize: 13, fontWeight: '500' as const },
